@@ -1,25 +1,31 @@
-class Calculator:
-    def __init__(self):
-        self.result = 0
+class Car:
+    def __init__(self, make, model, year, color):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.color = color
+        self.speed = 0
 
-    def add(self, x, y):
-        self.result = x + y
+    def start(self):
+        print(f"The {self.year} {self.make} {self.model} is starting.")
 
-    def subtract(self, x, y):
-        self.result = x - y
+    def accelerate(self, speed_increase):
+        self.speed += speed_increase
+        print(f"The car is now moving at {self.speed} mph.")
 
-    def multiply(self, x, y):
-        self.result = x * y
-
-    def divide(self, x, y):
-        if y == 0:
-            print("Cannot divide by zero.")
+    def brake(self, speed_decrease):
+        if self.speed >= speed_decrease:
+            self.speed -= speed_decrease
         else:
-            self.result = x / y
+            self.speed = 0
+        print(f"The car is now moving at {self.speed} mph after braking.")
 
-# Example usage of the Calculator class
-calc = Calculator()
-calc.add(5, 3)
-print("Result of addition:", calc.result)
-calc.multiply(4, 2)
-print("Result of multiplication:", calc.result)
+    def car_info(self):
+        print(f"Car Info: {self.year} {self.make} {self.model}, Color: {self.color}, Speed: {self.speed} mph")
+
+# Example usage of the Car class
+my_car = Car("Toyota", "Camry", 2022, "Silver")
+my_car.start()
+my_car.accelerate(30)
+my_car.brake(10)
+my_car.car_info()  # Display car information
